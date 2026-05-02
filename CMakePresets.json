@@ -1,0 +1,78 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "mingw64-release",
+      "displayName": "mingw-w64 Release",
+      "description": "Ninja + gcc build for the current no-Perl OpenSSL CMake bootstrap on Windows.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/mingw64-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "OPENSSL_CMAKE_DEPS": "AUTO",
+        "OPENSSL_CMAKE_BUILD_SHARED": "ON",
+        "OPENSSL_CMAKE_BUILD_APPS": "ON",
+        "OPENSSL_CMAKE_ENABLE_ASM": "OFF",
+        "OPENSSL_CMAKE_ENABLE_FIPS": "OFF",
+        "OPENSSL_CMAKE_ENABLE_MODULES": "OFF",
+        "OPENSSL_CMAKE_ENABLE_ZLIB_DYNAMIC": "ON"
+      }
+    },
+    {
+      "name": "mingw64-static-release",
+      "displayName": "mingw-w64 Static Release",
+      "description": "Ninja + gcc static-library build for the no-Perl OpenSSL CMake bootstrap on Windows.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/mingw64-static-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "OPENSSL_CMAKE_DEPS": "AUTO",
+        "OPENSSL_CMAKE_BUILD_SHARED": "OFF",
+        "OPENSSL_CMAKE_BUILD_APPS": "ON",
+        "OPENSSL_CMAKE_ENABLE_ASM": "OFF",
+        "OPENSSL_CMAKE_ENABLE_FIPS": "OFF",
+        "OPENSSL_CMAKE_ENABLE_MODULES": "OFF",
+        "OPENSSL_CMAKE_ENABLE_ZLIB_DYNAMIC": "ON"
+      }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux GCC Release",
+      "description": "Forward-looking preset for the same no-Perl bootstrap on Linux.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "gcc",
+        "OPENSSL_CMAKE_DEPS": "AUTO",
+        "OPENSSL_CMAKE_BUILD_SHARED": "ON",
+        "OPENSSL_CMAKE_BUILD_APPS": "ON",
+        "OPENSSL_CMAKE_ENABLE_ASM": "OFF",
+        "OPENSSL_CMAKE_ENABLE_FIPS": "OFF",
+        "OPENSSL_CMAKE_ENABLE_MODULES": "OFF",
+        "OPENSSL_CMAKE_ENABLE_ZLIB_DYNAMIC": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "mingw64-release",
+      "configurePreset": "mingw64-release"
+    },
+    {
+      "name": "mingw64-static-release",
+      "configurePreset": "mingw64-static-release"
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release"
+    }
+  ]
+}
